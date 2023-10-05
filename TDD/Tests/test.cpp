@@ -3,36 +3,53 @@
 #include "../Code/chapter1/Franc.cpp"
 #include "../Code/chapter1/Money.cpp"
 
+#include <memory>
+
 TEST(DollarMultiplication, Test0)
 {
-	const Dollar five(5);	
+	const auto five = std::make_unique<Dollar>(5);	
 
-	ASSERT_EQ(Dollar(10), five.times(2));	
-	ASSERT_EQ(Dollar(15), five.times(3));
+	const auto tenDollars = std::unique_ptr<Dollar>(five->times(2));
+	const auto fifteenDollars = std::unique_ptr<Dollar>(five->times(3));
+
+	ASSERT_TRUE(tenDollars->equals(Dollar(10)));
+	ASSERT_TRUE(fifteenDollars->equals(Dollar(15)));
+	ASSERT_FALSE(tenDollars->equals(*fifteenDollars));	
 }
 
 TEST(EqualityDollar, Test0)
 {
-	ASSERT_TRUE(Dollar(5).equals(Dollar(5)));
-	ASSERT_FALSE(Dollar(5).equals(Dollar(6)));
+	const auto fiveDollars = std::make_unique<Dollar>(5);
+	
+	ASSERT_TRUE(fiveDollars->equals(Dollar(5)));
+	ASSERT_FALSE(fiveDollars->equals(Dollar(6)));
 }
 
 
 TEST(FrancMultiplication, Test0)
 {
-	const Franc five(5);
+	const auto five = std::make_unique<Franc>(5);
 
-	ASSERT_EQ(Franc(10), five.times(2));
-	ASSERT_EQ(Franc(15), five.times(3));
+	const auto tenFrancs = std::unique_ptr<Franc>(five->times(2));
+	const auto fifteenFrancs = std::unique_ptr<Franc>(five->times(3));
+
+	ASSERT_TRUE(tenFrancs->equals(Franc(10)));
+	ASSERT_TRUE(fifteenFrancs->equals(Franc(15)));
+	ASSERT_FALSE(tenFrancs->equals(*fifteenFrancs));
 }
 
 TEST(EqualityFranc, Test0)
 {
-	ASSERT_TRUE(Franc(5).equals(Franc(5)));
-	ASSERT_FALSE(Franc(5).equals(Franc(6)));
+	const auto fiveFrancs = std::make_unique<Franc>(5);
+
+	ASSERT_TRUE(fiveFrancs->equals(Franc(5)));
+	ASSERT_FALSE(fiveFrancs->equals(Franc(6)));
 }
 
 TEST(EqualityDifferentMoney, Test0)
 {
-	ASSERT_FALSE(Franc(5).equals(Dollar(5)));
+	const auto fiveFrancs = std::make_unique<Franc>(5);
+	const auto fiveDollars = std::make_unique<Dollar>(5);
+
+	ASSERT_FALSE(fiveFrancs->equals(*fiveDollars));
 }

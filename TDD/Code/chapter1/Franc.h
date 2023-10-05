@@ -9,10 +9,10 @@ public:
 	Franc();
 	Franc(int count);
 
-	~Franc() override;
+	~Franc() override;	
+
+	Franc* times(int multiple) const;	
 
 	bool equals(const Money& other) const override;
-
-	Money times(int multiple) const;	
 };
 

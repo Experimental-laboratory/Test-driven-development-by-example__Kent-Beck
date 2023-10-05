@@ -28,7 +28,7 @@ bool Franc::equals(const Money& other) const
 	}	
 }
 
-Money Franc::times(int multiple) const
+Franc* Franc::times(int multiple) const
 {
-	return Franc(amount_ * multiple);
+	return new Franc(amount_ * multiple);
 }

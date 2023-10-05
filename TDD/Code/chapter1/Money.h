@@ -6,6 +6,7 @@ class Money
 public:
 
 	Money(int amount);
+
 	virtual ~Money();
 
 	int amount() const;
