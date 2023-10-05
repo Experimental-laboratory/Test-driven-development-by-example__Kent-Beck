@@ -11,7 +11,7 @@ public:
 
 	~Franc() override;	
 
-	Franc* times(int multiple) const;	
+	Money* times(int multiple) const;
 
 	bool equals(const Money& other) const override;
 };

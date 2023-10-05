@@ -9,8 +9,8 @@ TEST(DollarMultiplication, Test0)
 {
 	const auto five = std::make_unique<Dollar>(5);	
 
-	const auto tenDollars = std::unique_ptr<Dollar>(five->times(2));
-	const auto fifteenDollars = std::unique_ptr<Dollar>(five->times(3));
+	const auto tenDollars = std::unique_ptr<Money>(five->times(2));
+	const auto fifteenDollars = std::unique_ptr<Money>(five->times(3));
 
 	ASSERT_TRUE(tenDollars->equals(Dollar(10)));
 	ASSERT_TRUE(fifteenDollars->equals(Dollar(15)));
@@ -30,8 +30,8 @@ TEST(FrancMultiplication, Test0)
 {
 	const auto five = std::make_unique<Franc>(5);
 
-	const auto tenFrancs = std::unique_ptr<Franc>(five->times(2));
-	const auto fifteenFrancs = std::unique_ptr<Franc>(five->times(3));
+	const auto tenFrancs = std::unique_ptr<Money>(five->times(2));
+	const auto fifteenFrancs = std::unique_ptr<Money>(five->times(3));
 
 	ASSERT_TRUE(tenFrancs->equals(Franc(10)));
 	ASSERT_TRUE(fifteenFrancs->equals(Franc(15)));
