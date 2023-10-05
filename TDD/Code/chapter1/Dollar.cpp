@@ -14,7 +14,7 @@ Dollar::~Dollar()
 {
 }
 
-Dollar* Dollar::times(int multiple) const
+Money* Dollar::times(int multiple) const
 {
 	return new Dollar(amount_ * multiple);
 }

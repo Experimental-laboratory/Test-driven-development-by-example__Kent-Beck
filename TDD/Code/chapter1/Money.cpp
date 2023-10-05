@@ -1,5 +1,8 @@
 #include "Money.h"
 
+#include "Dollar.h"
+#include "Franc.h"
+
 Money::Money(int amount) : amount_(amount)
 {
 }
@@ -21,4 +24,14 @@ bool operator==(const Money& oth1, const Money& oth2)
 bool Money::equals(const Money& other) const
 {
 	return *this == other;
+}
+
+Money* Money::dollar(int amount)
+{
+	return new Dollar(amount);
+}
+
+Money* Money::franc(int amount)
+{
+	return new Franc(amount);
 }
