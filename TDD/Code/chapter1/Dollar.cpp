@@ -2,11 +2,11 @@
 
 #include <typeinfo>
 
-Dollar::Dollar() : Dollar(0)
+Dollar::Dollar(const std::string& currency) : Dollar(0, currency)
 {
 }
 
-Dollar::Dollar(int count) : Money(count)
+Dollar::Dollar(int count, const std::string& currency) : Money(count, currency)
 {
 }
 
@@ -16,7 +16,7 @@ Dollar::~Dollar()
 
 Money* Dollar::times(int multiple) const
 {
-	return new Dollar(amount_ * multiple);
+	return Money::dollar(amount_ * multiple);
 }
 
 bool Dollar::equals(const Money& other) const
@@ -31,3 +31,4 @@ bool Dollar::equals(const Money& other) const
 		return false;
 	}
 }
+

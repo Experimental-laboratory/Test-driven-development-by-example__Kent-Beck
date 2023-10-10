@@ -2,12 +2,11 @@
 
 #include <typeinfo>
 
-Franc::Franc() : Franc(0)
-{
-	
+Franc::Franc(const std::string& currency) : Franc(0, currency)
+{	
 }
 
-Franc::Franc(int count) : Money(count)
+Franc::Franc(int count, const std::string& currency) : Money(count, currency)
 {
 }
 
@@ -30,5 +29,5 @@ bool Franc::equals(const Money& other) const
 
 Money* Franc::times(int multiple) const
 {
-	return new Franc(amount_ * multiple);
+	return Money::franc(amount_ * multiple);
 }

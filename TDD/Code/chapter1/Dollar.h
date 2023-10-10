@@ -6,13 +6,14 @@ class Dollar : public Money
 {
 public:
 	
-	Dollar();
-	Dollar(int count);
+	Dollar(const std::string& currency);
+	Dollar(int count, const std::string& currency);
 
 	~Dollar() override;
 
 	Money* times(int multiple) const override;
 	
 	bool equals(const Money& other) const override;
+
 };
 
