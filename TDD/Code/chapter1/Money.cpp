@@ -3,7 +3,7 @@
 #include "Dollar.h"
 #include "Franc.h"
 
-Money::Money(int amount) : amount_(amount)
+Money::Money(int amount, const std::string& currency) : amount_(amount), m_currency(currency)
 {
 }
 
@@ -26,12 +26,17 @@ bool Money::equals(const Money& other) const
 	return *this == other;
 }
 
+std::string Money::currency()
+{
+	return m_currency;
+}
+
 Money* Money::dollar(int amount)
 {
-	return new Dollar(amount);
+	return new Dollar(amount, "USD");
 }
 
 Money* Money::franc(int amount)
 {
-	return new Franc(amount);
+	return new Franc(amount, "CHF");
 }
