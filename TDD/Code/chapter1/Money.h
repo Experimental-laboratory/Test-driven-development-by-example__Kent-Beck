@@ -17,7 +17,7 @@ public:
 	int amount() const;
 
 	virtual bool equals(const Money& other) const;
-	virtual Money* times(int multiple) const = 0;
+	virtual Money* times(int multiple) const;
 
 	virtual std::string currency();
 

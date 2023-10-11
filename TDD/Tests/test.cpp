@@ -58,3 +58,10 @@ TEST(TestCurrency, Test0)
 	ASSERT_EQ("USD", std::unique_ptr<Money>(Money::dollar(1))->currency());
 	ASSERT_EQ("CHF", std::unique_ptr<Money>(Money::franc(1))->currency());
 }
+
+TEST(DifferentClassEquality, Test0)
+{
+	ASSERT_TRUE(std::make_unique<Money>(5, "USD")->equals(Dollar(5, "USD")));
+	ASSERT_TRUE(std::make_unique<Money>(5, "CHF")->equals(Franc(5, "CHF")));
+	ASSERT_FALSE(std::make_unique<Money>(5, "USD")->equals(Franc(5, "CHF")));
+}
