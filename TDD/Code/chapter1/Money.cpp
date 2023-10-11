@@ -23,7 +23,12 @@ bool operator==(const Money& oth1, const Money& oth2)
 
 bool Money::equals(const Money& other) const
 {
-	return *this == other;
+	return *this == other && m_currency == other.m_currency;
+}
+
+Money* Money::times(int multiple) const
+{
+	return new Money(amount_ * multiple, m_currency);
 }
 
 std::string Money::currency()
