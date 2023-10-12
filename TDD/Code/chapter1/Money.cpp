@@ -1,8 +1,5 @@
 #include "Money.h"
 
-#include "Dollar.h"
-#include "Franc.h"
-
 Money::Money(int amount, const std::string& currency) : amount_(amount), m_currency(currency)
 {
 }
@@ -38,10 +35,10 @@ std::string Money::currency()
 
 Money* Money::dollar(int amount)
 {
-	return new Dollar(amount, "USD");
+	return new Money(amount, "USD");
 }
 
 Money* Money::franc(int amount)
 {
-	return new Franc(amount, "CHF");
+	return new Money(amount, "CHF");
 }
