@@ -4,10 +4,6 @@ Money::Money(int amount, const std::string& currency) : amount_(amount), m_curre
 {
 }
 
-Money::~Money()
-{
-}
-
 int Money::amount() const
 {
 	return amount_;
@@ -23,9 +19,9 @@ bool Money::equals(const Money& other) const
 	return *this == other && m_currency == other.m_currency;
 }
 
-Money* Money::times(int multiple) const
+Money Money::times(int multiple) const
 {
-	return new Money(amount_ * multiple, m_currency);
+	return Money(amount_ * multiple, m_currency);
 }
 
 std::string Money::currency()
@@ -33,12 +29,18 @@ std::string Money::currency()
 	return m_currency;
 }
 
-Money* Money::dollar(int amount)
+Money Money::dollar(int amount)
 {
-	return new Money(amount, "USD");
+	return Money(amount, "USD");
 }
 
-Money* Money::franc(int amount)
+Money Money::franc(int amount)
 {
-	return new Money(amount, "CHF");
+	return Money(amount, "CHF");
+}
+
+Money operator+(const Money& left, const Money& right)
+{
+	return Money(10, "USD");
+	// // O: insert return statement here
 }

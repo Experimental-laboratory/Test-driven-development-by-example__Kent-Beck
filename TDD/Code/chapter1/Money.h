@@ -11,18 +11,18 @@ class Money
 public:
 
 	Money(int amount, const std::string& currency);
-
-	virtual ~Money();
-
+	
 	int amount() const;
 
-	virtual bool equals(const Money& other) const;
-	virtual Money* times(int multiple) const;
+	bool equals(const Money& other) const;
+	Money times(int multiple) const;
 
-	virtual std::string currency();
+	std::string currency();
 
-	static Money* dollar(int amount);
-	static Money* franc(int amount);
+	static Money dollar(int amount);
+	static Money franc(int amount);
+
+	friend Money operator+(const Money& left, const Money& right);
 
 protected:
 
