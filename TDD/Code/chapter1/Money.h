@@ -1,28 +1,30 @@
 #pragma once
 
+#include "Expression.h"
+
 #include <string>
 
 class Dollar;
 class Franc;
 
-class Money
+class Money : public Expression
 {
 
 public:
 
 	Money(int amount, const std::string& currency);
-
-	virtual ~Money();
-
+	
 	int amount() const;
 
-	virtual bool equals(const Money& other) const;
-	virtual Money* times(int multiple) const;
+	bool equals(const Money& other) const;
+	Money times(int multiple) const;
 
-	virtual std::string currency();
+	std::string currency();
 
-	static Money* dollar(int amount);
-	static Money* franc(int amount);
+	static Money dollar(int amount);
+	static Money franc(int amount);
+
+	Expression plus(const Money& added);
 
 protected:
 

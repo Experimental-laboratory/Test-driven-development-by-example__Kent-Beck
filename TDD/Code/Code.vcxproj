@@ -128,14 +128,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="chapter1\Dollar.cpp" />
-    <ClCompile Include="chapter1\Franc.cpp" />
+    <ClCompile Include="chapter1\Bank.cpp" />
     <ClCompile Include="chapter1\Money.cpp" />
     <ClCompile Include="Code.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="chapter1\Dollar.h" />
-    <ClInclude Include="chapter1\Franc.h" />
+    <ClInclude Include="chapter1\Bank.h" />
+    <ClInclude Include="chapter1\Expression.h" />
     <ClInclude Include="chapter1\Money.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
