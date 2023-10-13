@@ -1,7 +1,7 @@
 #include "pch.h"
 
 #include "../Code/chapter1/Money.cpp"
-
+#include "../Code/chapter1/Bank.cpp"
 #include <memory>
 
 TEST(DollarMultiplication, Test0)
@@ -60,7 +60,14 @@ TEST(TestCurrency, Test0)
 
 TEST(SimpleAddition, Test0)
 {
-	/*const auto five = std::unique_ptr<Money>(Money::dollar(5));
+	Money five = Money::dollar(5);
+	Expression sum = five.plus(five);
+	Bank bank;
 
-	Money summ = std::unique_ptr<Money>(five.get() + five.get());*/
+	const auto optMoney = bank.reduce(sum, "USD");
+	ASSERT_TRUE(optMoney);
+	if ( optMoney)
+	{
+		ASSERT_TRUE(Money::dollar(10).equals(*optMoney));
+	}
 }

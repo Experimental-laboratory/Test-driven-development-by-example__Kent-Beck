@@ -1,11 +1,13 @@
 #pragma once
 
+#include "Expression.h"
+
 #include <string>
 
 class Dollar;
 class Franc;
 
-class Money
+class Money : public Expression
 {
 
 public:
@@ -22,7 +24,7 @@ public:
 	static Money dollar(int amount);
 	static Money franc(int amount);
 
-	friend Money operator+(const Money& left, const Money& right);
+	Expression plus(const Money& added);
 
 protected:
 

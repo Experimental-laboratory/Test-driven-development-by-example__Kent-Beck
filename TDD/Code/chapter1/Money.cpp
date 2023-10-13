@@ -39,8 +39,7 @@ Money Money::franc(int amount)
 	return Money(amount, "CHF");
 }
 
-Money operator+(const Money& left, const Money& right)
+Expression Money::plus(const Money& added)
 {
-	return Money(10, "USD");
-	// // O: insert return statement here
+	return Money(amount_ + added.amount_, m_currency);
 }
